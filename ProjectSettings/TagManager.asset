@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Game Manager
+  - Main Canvas
+  - Menu Canvas
+  - Main Camera
+  - Start Canvas
   layers:
   - Default
   - TransparentFX
