@@ -4,106 +4,122 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public enum GameState { start, playing, won, lost, pause };
+public enum GameState { start, tutorial, playing, won, lost, pause };
 
 public class GameManager : MonoBehaviour {
 
-    private GameObject GM;
+    public static GameManager GM;
 
     private GameState gameState;
 
-    private GameObject startCanvas;
+    // GUI variables
+    public GameObject startCanvas;
+    public GameObject mainCanvas;
+    public GameObject menuCanvas;
+    public GameObject mainCamera;
+    public GameObject tutorialCanvas;
 
-    private GameObject mainCanvas;
-
-    private GameObject menuCanvas;
-
-    private GameObject mainCamera;
-
-    //public GameObject playerPrefab;
-
-    //private GameObject playerInstance;
-
+    // GameObject instantiate position
     public float insPosX;
-
     public float insPosY;
 
-    public float sleepToT;
-
-    public float grade;
-
-    public float reviseToT;
-
+    // Player Character variables
+    public float sleepToT; // Total sleep value
+    public float grade; // player's potential final grade
+    public float reviseToT; //
     public float fireIndex;
-
     public float excitedIndex;
 
+
     private Scene myScene;
-
-    public string startScene;
-
-    public string bedroomScene;
-
     private string sceneName;
-
+    public string startScene;
+    public string bedroomScene;
     public string sheepScene;
-
     public string wakeupScene;
 
     private string playerName;
-
     private Text playerNameBlock;
 
 
     void Start()
-
     {
-        Debug.Log(this.GetSceneName());
-        if (this.GetSceneName() == startScene)
+        
+        //Debug.Log(this.GetSceneName());
+        //if (this.GetSceneName() == startScene)
+        //{
+        //    SetGameState(GameState.start);
+        //    OnStateChange();
+        //    if (startCanvas)
+        //    {
+        //        startCanvas.SetActive(true);
+        //    }
+        //}
+
+        //if (this.GetSceneName() == bedroomScene)
+        //{
+        //    mainCanvas = GameObject.FindGameObjectWithTag("Main Canvas");
+        //    menuCanvas = GameObject.FindGameObjectWithTag("Menu Canvas");
+
+        //    // mainCanvas.SetActive(true);
+
+        //}
+
+        GM = this;
+
+        if (GM == null)
         {
-            SetGameState(GameState.start);
-            OnStateChange();
-            if (startCanvas)
-            {
-                startCanvas.SetActive(true);
-            }
+            GM = this.gameObject.GetComponent<GameManager>();
         }
-
-        if (this.GetSceneName() == bedroomScene)
+        if (mainCamera)
         {
-            mainCanvas = GameObject.FindGameObjectWithTag("Main Canvas");
-            menuCanvas = GameObject.FindGameObjectWithTag("Menu Canvas");
-
-            // mainCanvas.SetActive(true);
-
-        }
-    }
-
-    void Update()
-    {
-
-    }
-
-    public void SetGameState(GameState state)
-    {
-        this.gameState = state;
-        OnStateChange();
-    }
-
-    private void OnStateChange()
-    {
-        if (startCanvas)
-        {
-            startCanvas.SetActive(false);
+            mainCamera.SetActive(true);
         }
         if (mainCanvas)
         {
             mainCanvas.SetActive(false);
         }
-        if (menuCanvas)
+        if (startCanvas)
         {
-            menuCanvas.SetActive(false);
+            startCanvas.SetActive(false);
         }
+        if (tutorialCanvas)
+        {
+            tutorialCanvas.SetActive(false);
+        }
+        gameState = GameState.start;
+    }
+
+    void Update()
+    {
+        switch (gameState)
+        {
+            case GameState.start:
+                if (startCanvas)
+                {
+                    startCanvas.SetActive(true);
+                }
+                else
+                {
+                    Debug.Log("Haven't assign start canvas!");
+                }
+                break;
+            case GameState.tutorial:
+                break;
+            case GameState.playing:
+                break;
+            case GameState.won:
+                break;
+            case GameState.lost:
+                break;
+            case GameState.pause:
+                break;
+        }
+    }
+
+    public void SetGameState(GameState state)
+    {
+        this.gameState = state;
     }
 
     private void GenerateGameObject(GameObject go, GameObject prefab, float gX, float gY)
@@ -122,7 +138,6 @@ public class GameManager : MonoBehaviour {
         {
             this.loadScene(bedroomScene);
             SetGameState(GameState.playing);
-            OnStateChange();
 
             if (mainCanvas)
             {
