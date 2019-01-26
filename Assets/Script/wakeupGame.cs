@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.ImageEffects;
+using EZCameraShake;
 
 public class wakeupGame : MonoBehaviour {
 
@@ -14,7 +15,9 @@ public class wakeupGame : MonoBehaviour {
     public Text text1;
     public float fireIndex = 4.0f;
     private bool forWakeUp = true;
+    private bool failToWakeUp = false;
 
+    private CameraShaker _camera;
     private ColorCorrectionCurves _colorCor;
 
     // Use this for initialization
@@ -27,12 +30,17 @@ public class wakeupGame : MonoBehaviour {
             _colorCor = FindObjectOfType<ColorCorrectionCurves>();
         }
         
+        if(_camera == null)        {
+            _camera = FindObjectOfType<CameraShaker>();
+        }
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
         if (forWakeUp) moveBar();
         wakeUp();
+        if (failToWakeUp) sleepAgain();
 	}
 
     void wakeUp(){
@@ -44,7 +52,8 @@ public class wakeupGame : MonoBehaviour {
             else
             {
                 text1.text = "GG!!!!";
-                sleepAgain();
+                failToWakeUp = true;
+                //cameraShake();
             }
 
             forWakeUp = false;
@@ -66,6 +75,10 @@ public class wakeupGame : MonoBehaviour {
     }
 
     void sleepAgain(){
-        _colorCor.saturation = 0.0f;
+        _colorCor.saturation = Mathf.Lerp(_colorCor.saturation, 0.0f, Time.deltaTime/2);
+    }
+
+    void cameraShake(){
+        _camera.ShakeOnce(4f, 4f, 0.15f, 1f);
     }
 }

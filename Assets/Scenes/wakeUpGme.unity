@@ -315,7 +315,7 @@ MonoBehaviour:
   wakeupBar: {fileID: 295477849}
   wakeUpArea: {fileID: 0}
   text1: {fileID: 985749680}
-  fireIndex: -1
+  fireIndex: 20
 --- !u!212 &607502458
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -527,6 +527,7 @@ GameObject:
   - component: {fileID: 1938801229}
   - component: {fileID: 1938801228}
   - component: {fileID: 1938801231}
+  - component: {fileID: 1938801232}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -786,6 +787,19 @@ MonoBehaviour:
     type: 3}
   colorCorrectionSelectiveShader: {fileID: 4800000, guid: e515e0f94cefc4c0db54b45cba621544,
     type: 3}
+--- !u!114 &1938801232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1938801227}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ab8353b5ebd32545867da143199a814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefaultPosInfluence: {x: 0.15, y: 0.15, z: 0.15}
+  DefaultRotInfluence: {x: 1, y: 1, z: 1}
 --- !u!1 &1986696351
 GameObject:
   m_ObjectHideFlags: 0
