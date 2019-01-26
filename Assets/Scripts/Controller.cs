@@ -13,7 +13,7 @@ public class Controller : MonoBehaviour {
 		Debug.Log((int)KeyCode.R);
 		
 
-		isLoaded = false;
+		//isLoaded = false;
 	}
 	
 	// Update is called once per frame
@@ -26,16 +26,19 @@ public class Controller : MonoBehaviour {
 			Debug.Log("IT IS 3");
 		if (Input.GetKey("4"))
 			Debug.Log("IT IS 4");
-
-		//Find the game object
-		GameObject[] sheeps = GameObject.FindGameObjectsWithTag("Sheep");
-		
-		if( isLoaded == false){
-			foreach (GameObject sheep in sheeps){
-				Debug.Log("Yep");				
-			}
+		if (Input.GetKey(KeyCode.Space)){
+			
 		}
 
-		isLoaded = true;
+		//Find the game object
+		//GameObject[] sheeps = GameObject.FindGameObjectsWithTag("Sheep");
+		
+		// if( isLoaded == false){
+		// 	foreach (GameObject sheep in sheeps){
+		// 		Debug.Log("Yep");				
+		// 	}
+		// }
+
+		// isLoaded = true;
 	}
 }
