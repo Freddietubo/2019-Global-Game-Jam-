@@ -8,12 +8,14 @@ public class Sheep : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//Test for ramdom int generator
-		int testRamdomInt = Random.Range(0, 4);
-		Debug.Log(testRamdomInt);
+		sheepType = Random.Range(0, 4);
+		//Debug.Log(sheepType);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+
+	public int getSheepType() { return sheepType; }
 }

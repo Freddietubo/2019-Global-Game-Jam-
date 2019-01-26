@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour {
 	// Use this for initialization
+	private bool isLoaded;
 	void Start () {
 		//numbers represents the keyboard keys
 		Debug.Log((int)KeyCode.Q);
 		Debug.Log((int)KeyCode.W);
 		Debug.Log((int)KeyCode.E);
 		Debug.Log((int)KeyCode.R);
+		
+
+		isLoaded = false;
 	}
 	
 	// Update is called once per frame
@@ -23,5 +27,15 @@ public class Controller : MonoBehaviour {
 		if (Input.GetKey("4"))
 			Debug.Log("IT IS 4");
 
+		//Find the game object
+		GameObject[] sheeps = GameObject.FindGameObjectsWithTag("Sheep");
+		
+		if( isLoaded == false){
+			foreach (GameObject sheep in sheeps){
+				Debug.Log("Yep");				
+			}
+		}
+
+		isLoaded = true;
 	}
 }
