@@ -8,11 +8,6 @@ public class Sheep : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//Test for ramdom int generator
-		sheepType = Random.Range(0, 4);
-		Debug.Log(this.transform.localScale.y);
-		//Debug.Log(sheepType);
-
 		//initiate position range
 		float xPosition = this.transform.position.x;
 		float xScale = this.transform.localScale.x;
@@ -25,7 +20,6 @@ public class Sheep : MonoBehaviour {
 		
 	}
 
-	public int getSheepType() { return sheepType; }
 
 	public Vector2 getPostionRange() { return xPositionRange; }
 }
