@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public enum GameState { start, tutorial, playing, won, lost, pause };
+public enum GameState { start, tutorial, playing, counting, cutting, pause };
 
 public class GameManager : MonoBehaviour {
 
@@ -26,14 +26,15 @@ public class GameManager : MonoBehaviour {
     // Player Character variables
     public float sleepToT; // Total sleep value
     public float grade; // player's potential final grade
-    public float reviseToT; //
-    public float fireIndex;
-    public float excitedIndex;
-
+    public float reviseToT; // revice pts will influence player's final grade
+    public float fireIndex; // fireIndex >= excitedIndex count sheep
+    public float excitedIndex; //
+    public float vitalityIndex; // speed of cutting line
 
     private Scene myScene;
     private string sceneName;
     public string startScene;
+    public string tutorialScene;
     public string bedroomScene;
     public string sheepScene;
     public string wakeupScene;
@@ -87,11 +88,36 @@ public class GameManager : MonoBehaviour {
         {
             tutorialCanvas.SetActive(false);
         }
-        gameState = GameState.start;
+
+        sceneName = GetSceneName();
+        Debug.Log(sceneName);
+
+
+
+        switch (sceneName)
+        {
+            case "StartScene":
+                gameState = GameState.start;
+                break;
+            case "BedroomScene":
+                gameState = GameState.playing;
+                break;
+            case "TutorialScene":
+                gameState = GameState.tutorial;
+                break;
+            case "CountingSheep":
+                gameState = GameState.counting;
+                break;
+            case "wakeUpGme":
+                gameState = GameState.cutting;
+                break;
+        }
+
     }
 
     void Update()
     {
+
         switch (gameState)
         {
             case GameState.start:
@@ -108,9 +134,9 @@ public class GameManager : MonoBehaviour {
                 break;
             case GameState.playing:
                 break;
-            case GameState.won:
+            case GameState.counting:
                 break;
-            case GameState.lost:
+            case GameState.cutting:
                 break;
             case GameState.pause:
                 break;
@@ -152,6 +178,11 @@ public class GameManager : MonoBehaviour {
         {
             this.loadScene(sheepScene);
         }
+    }
+
+    public void getUp()
+    {
+        loadScene(wakeupScene);
     }
     public void Quit()
     {
