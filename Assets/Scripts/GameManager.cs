@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum GameState { playing, won, lost, pause };
 
@@ -10,6 +11,8 @@ public class GameManager : MonoBehaviour {
 
     private GameState gameState;
 
+    private GameObject startCanvas;
+
     private GameObject mainCanvas;
 
     private GameObject menuCanvas;
@@ -18,18 +21,35 @@ public class GameManager : MonoBehaviour {
 
     public GameObject playerPrefab;
 
+    private GameObject playerInstance;
+
     public float insPosX;
 
     public float insPosY;
+
+    public float sleepToT;
+
+    public float grade;
+
+    public float reviseToT;
+
+    public float fireIndex;
+
+    public float excitedIndex;
+
+    public string sheepScene;
 
     void Awake()
     {
         GM = GameObject.FindGameObjectWithTag("Game Manager");
 
+        startCanvas = GameObject.FindGameObjectWithTag("Start Canvas");
         mainCanvas = GameObject.FindGameObjectWithTag("Main Canvas");
         menuCanvas = GameObject.FindGameObjectWithTag("Menu Canvas");
 
         mainCamera = GameObject.FindGameObjectWithTag("Main Camera");
+
+        OnStateChange();
 
     }
 
@@ -37,7 +57,7 @@ public class GameManager : MonoBehaviour {
     {
         SetGameState(GameState.playing);
 
-        GameObject playerInstance = Instantiate(playerPrefab, new Vector3(insPosX, insPosY, 0), Quaternion.identity) as GameObject;
+        this.GenerateGameObject(playerInstance, playerPrefab, insPosX, insPosY);
 
         mainCanvas.SetActive(true);
     }
@@ -55,12 +75,30 @@ public class GameManager : MonoBehaviour {
 
     private void OnStateChange()
     {
+        this.startCanvas.SetActive(false);
         this.mainCanvas.SetActive(false);
         this.menuCanvas.SetActive(false);
     }
 
+    private void GenerateGameObject(GameObject go, GameObject prefab, float gX, float gY)
+    {
+        go = Instantiate(prefab, new Vector3(gX, gY, 0), Quaternion.identity) as GameObject;
+    }
+
+    private void loadScene(string scene2load)
+    {
+        SceneManager.LoadScene(scene2load);
+    }
+
+    public void goSleep()
+    {
+        if (fireIndex >= excitedIndex)
+        {
+            this.loadScene(sheepScene);
+        }
+    }
     public void Quit()
     {
-        Application.Quit();
+        Debug.Log("Quit!");
     }
 }

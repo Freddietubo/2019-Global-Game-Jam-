@@ -8,6 +8,7 @@ TagManager:
   - Main Canvas
   - Menu Canvas
   - Main Camera
+  - Start Canvas
   layers:
   - Default
   - TransparentFX
