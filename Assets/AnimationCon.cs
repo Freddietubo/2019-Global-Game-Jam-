@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class AnimationCon : MonoBehaviour {
 
-    
+    static AnimationCon instance;
+
+	public static AnimationCon getInstance(){ return instance; }
     public Animator animator;
 	// Use this for initialization
 	void Start () {
-        animator.SetBool("isRoommateIn", true);
-        animator.SetBool("isRoommateOut", true);
+
+		instance = this;
+       // animator.SetBool("isRoommateIn", true);
+       // animator.SetBool("isRoommateOut", true);
 	}
 	
 	// Update is called once per frame

@@ -33,7 +33,8 @@ public class EventsFlowManager : MonoBehaviour {
     public float addFire;
     public float reduceVit;
 
-    public Animator animator;
+   // public Animator animator;
+
 
     public void loadScene()
     {
@@ -92,6 +93,9 @@ public class EventsFlowManager : MonoBehaviour {
         int i = Random.Range(0, 3);
     //  animator.SetBool("isRoommateIn", true);
      // animator.SetBool("isRoommateOut", false);
+        AnimationCon ani = AnimationCon.getInstance();
+        ani.animator.SetBool("isRoommateIn", true);
+        ani.animator.SetBool("isRoommateOut", false);
         //int i = 0;
         switch (i)
         {
@@ -117,6 +121,9 @@ public class EventsFlowManager : MonoBehaviour {
     {
     //  animator.SetBool("isRoommateIn", false);
       //animator.SetBool("isRoommateOut", true);
+        AnimationCon ani = AnimationCon.getInstance();
+        ani.animator.SetBool("isRoommateIn", false);
+        ani.animator.SetBool("isRoommateOut", true);
         if (canvas2show != null)
         {
             canvas2show.SetActive(true);
