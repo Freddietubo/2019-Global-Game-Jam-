@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityStandardAssets.ImageEffects;
 
@@ -13,10 +14,10 @@ public class wakeupGame : MonoBehaviour {
     Vector3 rangePosition;
     Vector3 worldRangePosition;
     public Text text1;
-    public float fireIndex = 4.0f;
+    public float vitality = GameManager.GM.vitalityIndex;
     private bool forWakeUp = true;
     private bool failToWakeUp = false;
-
+    private float sleepIndex;
     //
     private ColorCorrectionCurves _colorCor;
 
@@ -29,7 +30,9 @@ public class wakeupGame : MonoBehaviour {
         if(_colorCor == null){
             _colorCor = FindObjectOfType<ColorCorrectionCurves>();
         }
-        
+
+        sleepIndex = 20.0f + (50.0f - vitality)/2;
+
         //if(_camera == null)        {
         //    _camera = FindObjectOfType<CameraShaker>();
         //}
@@ -48,30 +51,40 @@ public class wakeupGame : MonoBehaviour {
             if (transform.position.x <= (rangePosition.x + 0.5) && (transform.position.x >= rangePosition.x - 0.5))
             {
                 text1.text = "Wake Up Successfully!!!";
+                Invoke("wakeUpSuccessfully", 3);
             }
             else
             {
                 text1.text = "GG!!!!";
                 failToWakeUp = true;
+                vitality += 10.0f;
+                GameManager.GM.vitalityIndex = vitality;
+                Debug.Log(vitality.ToString());
+                Invoke("closeTheWakeUpGame", 3);
                 //cameraShake();
             }
 
             forWakeUp = false;
 
-            Invoke("closeTheWakeUpGame", 3);
+            
         }
     }
 
     void moveBar(){
-        transform.position = new Vector2(Mathf.PingPong(Time.time * fireIndex, 12) - 6, transform.position.y);
+        transform.position = new Vector2(Mathf.PingPong(Time.time * sleepIndex, 12) - 6, transform.position.y);
+    }
+
+    void wakeUpSuccessfully(){
+        SceneManager.LoadScene("BedroomScene");
     }
 
     void closeTheWakeUpGame() {
-        wakeupRange.SetActive(false);
-        wakeupBar.SetActive(false);
-        gameObject.SetActive(false);
-        Destroy(wakeUpArea);
-        text1.text = "";
+        SceneManager.LoadScene("wakeUpGme");
+        //wakeupRange.SetActive(false);
+        //wakeupBar.SetActive(false);
+        //gameObject.SetActive(false);
+        //Destroy(wakeUpArea);
+        //text1.text = "";
     }
 
     void sleepAgain(){

@@ -14,6 +14,9 @@ public class Line : MonoBehaviour {
 		transform.Translate(speed * Time.deltaTime, 0.0f, 0.0f);
 		float currentX = this.transform.position.x;
 		if(Input.GetKey(KeyCode.Space)) CountSheep(currentX);
+
+
+
 	}
 
 	void CountSheep(float currentX){
@@ -25,4 +28,7 @@ public class Line : MonoBehaviour {
 			//Debug.Log(positionRange);
 		}
 	}
+
+
+
 }

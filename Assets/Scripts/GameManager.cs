@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour {
     public float reviseToT; // revice pts will influence player's final grade
     public float fireIndex; // fireIndex >= excitedIndex count sheep
     public float excitedIndex; //
-    public float vitalityIndex; // speed of cutting line
+    public float vitalityIndex = 50.0f; // speed of cutting line
 
     private Scene myScene;
     private string sceneName;
@@ -38,10 +38,25 @@ public class GameManager : MonoBehaviour {
     public string bedroomScene;
     public string sheepScene;
     public string wakeupScene;
+    public string reviseScene;
+    public string gameScene;
 
-    private string playerName;
+    public string playerName;
     private Text playerNameBlock;
 
+
+    private void Awake()
+    {
+        if (GM == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            GM = this;
+        }
+        else if(GM != null)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
@@ -66,12 +81,9 @@ public class GameManager : MonoBehaviour {
 
         //}
 
-        GM = this;
+        
 
-        if (GM == null)
-        {
-            GM = this.gameObject.GetComponent<GameManager>();
-        }
+        
         if (mainCamera)
         {
             mainCamera.SetActive(true);
@@ -199,5 +211,15 @@ public class GameManager : MonoBehaviour {
     public void NamedSSL()
     {
         playerName = "SuperSuperLazy";
+    }
+
+    public void NamedSL()
+    {
+        playerName = "SuperLazy";
+    }
+
+    public void NamedL()
+    {
+        playerName = "Lazy";
     }
 }

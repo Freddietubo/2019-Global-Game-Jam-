@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SheepSpawner : MonoBehaviour {
 
@@ -20,15 +21,25 @@ public class SheepSpawner : MonoBehaviour {
 		Instantiate(sheep, new Vector3(2.0f, 0.0f, 0.0f), Quaternion.identity);
 		Instantiate(sheep, new Vector3(5.0f, 0.0f, 0.0f), Quaternion.identity);
 
-		
+        
 
 		//Spawn the line
 		GameObject line = (GameObject)Resources.Load("Prefebs/Line", typeof(GameObject));
 		Instantiate(line, new Vector3(-8.0f, 0.0f, 0.0f), Quaternion.identity);
+
+
+        Invoke("getUp", 8);
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+
+    void getUp() {
+        SceneManager.LoadScene("wakeUpGme");
+    }
+
+
 }
