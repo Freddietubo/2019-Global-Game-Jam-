@@ -13,6 +13,11 @@ public class Line : MonoBehaviour
     public int missCount;
     public Text ifSleep;
     private bool isChangeLoad=true;
+
+    public GameObject perfect;
+    public GameObject good;
+    public GameObject miss;
+
     //
     private float currentX;
 
@@ -27,7 +32,9 @@ public class Line : MonoBehaviour
         currentX = spawner.getCurrentX();
         GameManager.GM.fireIndex -= 10.0f;
         ifSleep = GameObject.Find("Canvas").GetComponentInChildren<Text>();
-        
+        perfect = GameObject.Find("perfect");
+        good = GameObject.Find("good");
+        miss = GameObject.Find("miss");
     }
 
     // Update is called once per frame
@@ -102,6 +109,9 @@ public class Line : MonoBehaviour
         {
             spawner.deleteElement();
             countIndex++;
+            perfect.SetActive(true);
+            good.SetActive(false);
+            miss.SetActive(false);
             Debug.Log("Perfect");
             return true;
         }
@@ -110,6 +120,9 @@ public class Line : MonoBehaviour
         {
             spawner.deleteElement();
             countIndex++;
+            perfect.SetActive(false);
+            good.SetActive(true);
+            miss.SetActive(false);
             Debug.Log("Good");
             return true;
         }
@@ -118,6 +131,9 @@ public class Line : MonoBehaviour
         {
             spawner.deleteElement();
             missCount++;
+            perfect.SetActive(false);
+            good.SetActive(false);
+            miss.SetActive(true);
             Debug.Log("Miss");
             return true;
         }

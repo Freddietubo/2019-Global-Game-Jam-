@@ -99,9 +99,14 @@ public class wakeupGame : MonoBehaviour {
         {
             GameManager.GM.countSleep = 0;
             text1.text = "Game Over(Miss final)";
-            SceneManager.LoadScene("MorningScene");
+            Invoke("weileshenme", 3);
         }
         _colorCor.saturation = Mathf.Lerp(_colorCor.saturation, 0.0f, Time.deltaTime/2);
+    }
+
+    void weileshenme()
+    {
+        SceneManager.LoadScene("MorningScene");
     }
 
     //void cameraShake(){

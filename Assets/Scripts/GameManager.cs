@@ -223,4 +223,10 @@ public class GameManager : MonoBehaviour {
     {
         playerName = "Lazy";
     }
+
+    public void toTu()
+    {
+        SceneManager.LoadScene("TutorialScene");
+    }
+
 }
