@@ -1,0 +1,33 @@
+fileFormatVersion: 2
+guid: 34b96f180f1767a4892c0c9d93d20be3
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - dancingCanvas: {fileID: 1031291782470302, guid: 34a8e6c740462fd41853450df29250b7,
+      type: 2}
+  - foodCanvas: {fileID: 1624930802770592, guid: 0402aced56da60347a8aa8e5563c97f3,
+      type: 2}
+  - GameCanvas: {fileID: 1298980803690248, guid: 60da0b55b409ea34ba90114254686d49,
+      type: 2}
+  - canvas2show: {instanceID: 0}
+  - canvas2hide0: {instanceID: 0}
+  - canvas2hide1: {instanceID: 0}
+  - canvas2hide2: {instanceID: 0}
+  - sleepValueText: {fileID: 114535016366605850, guid: 2a89fab48e876c3468e96049433d59fd,
+      type: 2}
+  - gradeValueText: {fileID: 114801720981978848, guid: 2a89fab48e876c3468e96049433d59fd,
+      type: 2}
+  - reviseEffortText: {fileID: 114636208204098086, guid: 2a89fab48e876c3468e96049433d59fd,
+      type: 2}
+  - fireIndexText: {fileID: 114183046638579922, guid: 2a89fab48e876c3468e96049433d59fd,
+      type: 2}
+  - excitedIndexText: {fileID: 114126770050981622, guid: 2a89fab48e876c3468e96049433d59fd,
+      type: 2}
+  - vitalityIndexText: {fileID: 114306939354289146, guid: 2a89fab48e876c3468e96049433d59fd,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
