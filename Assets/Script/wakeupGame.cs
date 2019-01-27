@@ -57,6 +57,7 @@ public class wakeupGame : MonoBehaviour {
             {
                 text1.text = "GG!!!!";
                 failToWakeUp = true;
+                GameManager.GM.countSleep++;
                 vitality += 10.0f;
                 GameManager.GM.vitalityIndex = vitality;
                 Debug.Log(vitality.ToString());
@@ -88,6 +89,12 @@ public class wakeupGame : MonoBehaviour {
     }
 
     void sleepAgain(){
+        
+        Debug.Log(GameManager.GM.countSleep.ToString());
+        if(GameManager.GM.countSleep >= 3)
+        {
+            text1.text = "Game Over(Miss final)";
+        }
         _colorCor.saturation = Mathf.Lerp(_colorCor.saturation, 0.0f, Time.deltaTime/2);
     }
 

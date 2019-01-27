@@ -11,6 +11,8 @@ public class ChangeScene : MonoBehaviour {
     //public Text playername;
     public TextMeshProUGUI playername;
 
+    public Text tips;
+
     // Use this for initialization
     void Start () {
         setPlayerName();
@@ -23,7 +25,21 @@ public class ChangeScene : MonoBehaviour {
 
     public void sleepClick()
     {
-        SceneManager.LoadScene(GameManager.GM.sheepScene);
+        if (GameManager.GM.fireIndex >= 50.0f)
+        {
+            SceneManager.LoadScene(GameManager.GM.sheepScene);
+        }
+        else
+        {
+            tips.text = "Fall Sleep";
+            Invoke("toWakeUp", 3);
+        }
+        
+    }
+
+    public void toWakeUp()
+    {
+        SceneManager.LoadScene(GameManager.GM.wakeupScene);
     }
 
     public void reviseClick()

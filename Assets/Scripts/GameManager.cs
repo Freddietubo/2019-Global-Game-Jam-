@@ -27,9 +27,10 @@ public class GameManager : MonoBehaviour {
     public float sleepToT; // Total sleep value
     public float grade; // player's potential final grade
     public float reviseToT; // revice pts will influence player's final grade
-    public float fireIndex; // fireIndex >= excitedIndex count sheep
+    public float fireIndex = 70.0f; // fireIndex >= excitedIndex count sheep
     public float excitedIndex; //
     public float vitalityIndex = 50.0f; // speed of cutting line
+    public int countSleep = 0;
 
     private Scene myScene;
     private string sceneName;
