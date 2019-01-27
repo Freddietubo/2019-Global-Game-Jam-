@@ -8,25 +8,25 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/GMScene.unity
     guid: 6615c7cef6055b6478752067a8746ef7
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/StartMenu.unity
     guid: 3a21407331464bf4bbdb356444899e02
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/StartScene.unity
     guid: 0649290c2323b4a40aef91715d008e1d
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/wakeUpGme.unity
     guid: ed18defbd41bee24fb4c41c31eb9ec53
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/CountingSheep.unity
     guid: 5ca8e3feeedee564ba89c01877e424db
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/BedroomScene.unity
     guid: 7e606b2bc9621a240b68a07550bdb5f4
   - enabled: 1
@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BadRoommateWannaFire.unity
     guid: a5bf07ca0ddd82244acb30cb0492695b
+  - enabled: 1
+    path: Assets/Scenes/ReviseGame.unity
+    guid: ea337a36214669f4dae2f0d109b8a98e
   m_configObjects: {}
