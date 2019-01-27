@@ -87,7 +87,7 @@ public class EventsFlowManager : MonoBehaviour {
 
     public void GenerateEvent()
     {
-        int i = Random.Range(0, 2);
+        int i = Random.Range(0, 3);
         //int i = 0;
         switch (i)
         {
@@ -120,6 +120,11 @@ public class EventsFlowManager : MonoBehaviour {
             canvas2hide0.SetActive(false);
         }
         
+    }
+
+    public void toBedroom()
+    {
+        SceneManager.LoadScene("BedroomScene");
     }
 
 }

@@ -27,7 +27,7 @@ public class Line : MonoBehaviour
         currentX = spawner.getCurrentX();
         GameManager.GM.fireIndex -= 10.0f;
         ifSleep = GameObject.Find("Canvas").GetComponentInChildren<Text>();
-        GameManager.GM.fireIndex -= 10.0f;
+        
     }
 
     // Update is called once per frame
@@ -74,17 +74,20 @@ public class Line : MonoBehaviour
     void sleepSuccessFully()
     {
         ifSleep.text = "Sleep!!!!!";
+        //GameManager.GM.vitalityIndex -= 10.0f;
         Invoke("toWakeUp", 3);
     }
 
     void failToSleep()
     {
         ifSleep.text = "Fail To Sleep. You can revise or play the game!!!";
+        GameManager.GM.vitalityIndex -= 10.0f;
         Invoke("toBedroom", 3);
     }
 
     void toWakeUp()
     {
+
         SceneManager.LoadScene("wakeUpGme");
     }
 

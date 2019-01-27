@@ -61,7 +61,11 @@ public class wakeupGame : MonoBehaviour {
                 vitality += 10.0f;
                 GameManager.GM.vitalityIndex = vitality;
                 Debug.Log(vitality.ToString());
-                Invoke("closeTheWakeUpGame", 3);
+
+                if(GameManager.GM.countSleep < 3)
+                {
+                    Invoke("closeTheWakeUpGame", 3);
+                }
                 //cameraShake();
             }
 
@@ -76,7 +80,7 @@ public class wakeupGame : MonoBehaviour {
     }
 
     void wakeUpSuccessfully(){
-        SceneManager.LoadScene("BedroomScene");
+        SceneManager.LoadScene("MorningScene");
     }
 
     void closeTheWakeUpGame() {
@@ -93,7 +97,9 @@ public class wakeupGame : MonoBehaviour {
         Debug.Log(GameManager.GM.countSleep.ToString());
         if(GameManager.GM.countSleep >= 3)
         {
+            GameManager.GM.countSleep = 0;
             text1.text = "Game Over(Miss final)";
+            SceneManager.LoadScene("MorningScene");
         }
         _colorCor.saturation = Mathf.Lerp(_colorCor.saturation, 0.0f, Time.deltaTime/2);
     }

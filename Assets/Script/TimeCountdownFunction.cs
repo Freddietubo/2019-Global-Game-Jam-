@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class TimeCountdownFunction : MonoBehaviour {
 
-    public int testTotalSeconds = 10;
-    private int leaveSeconds;
+    private float testTotalSeconds = 5.0f - (70.0f-GameManager.GM.fireIndex)/10.0f;
+    private float leaveSeconds;
     private bool onCountDown = false;
     private string countDownTitle = "Start";
 

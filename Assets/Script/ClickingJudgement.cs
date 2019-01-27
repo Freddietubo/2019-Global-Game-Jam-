@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ClickingJudgement : MonoBehaviour {
     public Button[] key;
     public GameObject winText;
     public GameObject  failText;
+    public GameObject missText;
     public TimeCountdownFunction timeCountdown;
     //keyI = 0, keyG = 1, keyM = 2
     int count = 0;
@@ -14,14 +16,17 @@ public class ClickingJudgement : MonoBehaviour {
     private int[] rightCountIndex1 = { 0, 1, 2 };
     private int keyLength1;
     private bool isEnd = false;
+    private bool isSleep = true;
+    
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         keyLength1 = rightCountIndex1.Length;
         key[0].transform.position = new Vector3(Random.Range(90.0f, 815.0f), Random.Range(92.0f, 419.0f), 0.0f);
         key[1].transform.position = new Vector3(Random.Range(90.0f, 815.0f), Random.Range(92.0f, 419.0f), 0.0f);
         key[2].transform.position = new Vector3(Random.Range(90.0f, 815.0f), Random.Range(92.0f, 419.0f), 0.0f);
+        
     }
 	
 	// Update is called once per frame
@@ -36,24 +41,47 @@ public class ClickingJudgement : MonoBehaviour {
                 //Debug.Log("Right");
                 winText.SetActive(true);
                 count = 0;
-
+                GameManager.GM.fireIndex -= 20.0f;
+                isSleep = false;
+                Invoke("toBedroom", 3);
             }
             else
             {
-                failText.SetActive(true);
+                missText.SetActive(true);
                 count = 0;
+                isSleep = false;
+                GameManager.GM.fireIndex -= 20.0f;
+                Invoke("toBedroom", 3);
             }
         }
-         if ((count == keyLength1) && (isEnd == true)) {
-            failText.SetActive(true);
-            count = 0;
-
+        if (isSleep)
+        {
+            if ((count < keyLength1) && (isEnd == true))
+            {
+                failText.SetActive(true);
+                count = 0;
+                GameManager.GM.fireIndex = 40.0f;
+                GameManager.GM.vitalityIndex = 30.0f;
+                Invoke("toWakeUp", 3);
+            }
         }
+
+
 		
             
             
         
 	}
+
+    public void toBedroom()
+    {
+        SceneManager.LoadScene(GameManager.GM.bedroomScene);
+    }
+
+    public void toWakeUp()
+    {
+        SceneManager.LoadScene(GameManager.GM.wakeupScene);
+    }
 
     public void PressKeyI()
     {

@@ -530,6 +530,16 @@ Prefab:
       propertyPath: sheepScene
       value: CountingSheep
       objectReference: {fileID: 0}
+    - target: {fileID: 114778197962282672, guid: 013eab462724c3b4fa39638df7d758ac,
+        type: 2}
+      propertyPath: reviseScene
+      value: ReviseGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 114778197962282672, guid: 013eab462724c3b4fa39638df7d758ac,
+        type: 2}
+      propertyPath: fireIndex
+      value: 70
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 013eab462724c3b4fa39638df7d758ac, type: 2}
   m_IsPrefabAsset: 0
